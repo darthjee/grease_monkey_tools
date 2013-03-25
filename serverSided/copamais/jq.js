@@ -1,0 +1,1 @@
+/home/favini//arquivos/Dropbox/meus_programas/greasemonkey/serverSided/facebook/jq.js

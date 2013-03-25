@@ -1,0 +1,100 @@
+#greaseTool
+{
+  position: fixed;
+  top: 80px;
+  right:20px;
+  z-index:900;
+  background:#eeeeee;
+  padding:7px;
+}
+
+#greaseTool #menu
+{
+  text-alig:left;
+  height:30px;
+}
+
+#greaseTool #tool-content form
+{
+  text-align:left;
+}
+
+#greaseTool #tool-content textarea.full-textarea
+{
+  min-width:340px;
+}
+
+#greaseTool #tool-content label
+{
+  min-width:90px;
+  display:inline-table;
+  text-align:left;
+  font-weight:bold;
+}
+
+#greaseTool #tool-content input[type=text], #greaseTool #tool-content textarea
+{
+  min-width:250px;
+}
+
+#greaseTool #tool-content textarea
+{
+  min-height:100px;
+}
+
+#greaseTool #menu a
+{
+  background:#00aaff;
+  padding:2px;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  padding:3px;
+  float:left;
+}
+#greaseTool #menu a.tool-btn
+{
+  margin:0 0 0 2px;
+}
+
+#greaseTool #menu a#close-btn
+{
+  background:#ee0022;
+}
+
+#greaseTool.opened #open-btn
+{
+  display: none;
+}
+
+#greaseTool.closed #menu, #greaseTool.closed #tool-content
+{
+  display: none;
+}
+
+#greaseTool #close-btn
+{
+  float:right;
+}
+
+#greaseTool #filler-tool textarea
+{
+  width:300px;
+  height:200px;
+}
+
+#greaseTool .button-blue input
+{
+  margin:2px;
+}
+
+
+#form-gen-tool textarea
+{
+  width:500px;
+}
+
+#tool-content .roller
+{
+  overflow:auto;
+}
