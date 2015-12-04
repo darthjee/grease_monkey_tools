@@ -1,53 +1,53 @@
 #grst-window
 {
-	position:fixed;
-	top:40px;
-	right:10px;
-	z-index:5;
+  position:fixed;
+  top:40px;
+  right:10px;
+  z-index:5;
 }
 
 #grst-window .grst-menu span
 {
-	color:#000;
-	font-weight:bold;
-	padding:1px 3px;
-	cursor:pointer;
+  color:#000;
+  font-weight:bold;
+  padding:1px 3px;
+  cursor:pointer;
 }
 
 #grst-window .grst-menu span:hover
 {
-	color:#fff;
-	background:#000;
+  color:#fff;
+  background:#000;
 }
 
 #grst-window .grst-menu span#grst-close-btn
 {
-	float:right;
-	color:#f00;
-	background:#000;
+  float:right;
+  color:#f00;
+  background:#000;
 }
 #grst-window .grst-menu span#grst-close-btn:hover
 {
-	color:#000;
-	background:#f00;
+  color:#000;
+  background:#f00;
 }
 
 #grst-window.closed .grst-menu span
 {
-	display:none;
+  display:none;
 }
 #grst-window .grst-menu span#grst-open-btn
 {
-	display:none;
+  display:none;
 }
 #grst-window.closed .grst-menu span#grst-open-btn
 {
-	display:inline;
-	color:#fff;
-	background:#a40;
+  display:inline;
+  color:#fff;
+  background:#a40;
 }
 
 #grst-window.closed .grst-content
 {
-	display:none;
+  display:none;
 }

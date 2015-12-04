@@ -1,71 +1,71 @@
 #grst-window
 {
-	position:relative;
-	top:0px;
-	right:0px;
+  position:relative;
+  top:0px;
+  right:0px;
 }
 
 .GMS-Menu
 {
-	position:fixed;
-	top:40px;
-	right:10px;
+  position:fixed;
+  top:40px;
+  right:10px;
 }
 
 .GMS-Menu input[type="text"],.GMS-Menu textarea
 {
-	width:250px;
+  width:250px;
 }
 
 .GMS-Menu .GM-wings-menu .GM-menu-btn
 {
-	float:left;
-	margin-right:5px;
-	cursor:pointer;
-	background:#000;
-	color:#fff;
-	font-weight:bold;
-	padding: 1px 3px;
+  float:left;
+  margin-right:5px;
+  cursor:pointer;
+  background:#000;
+  color:#fff;
+  font-weight:bold;
+  padding: 1px 3px;
 }
 .GMS-Menu .GM-wings-menu .GM-menu-btn:hover
 {
-	background:#8bf;
-	color:#000;
+  background:#8bf;
+  color:#000;
 }
 .GMS-Menu .GM-wings-menu .GM-menu-btn.active
 {
-	background:#47d;
-	color:#000;
+  background:#47d;
+  color:#000;
 }
 
 div.GMS-Menu
 {
-	background:#47d;
-	padding:2px;
+  background:#47d;
+  padding:2px;
 }
 div.GMS-Menu .GM-wings-menu
 {
-	height:23px;
-	overflow:hidden;
+  height:23px;
+  overflow:hidden;
 }
 
 .GM-body label{
-	color:black;
+  color:black;
 }
 
 .GM-body li.link
 {
-	cursor:pointer;
+  cursor:pointer;
 }
 .GM-body li.link:hover
 {
-	background:#000;
-	color:#47d;
+  background:#000;
+  color:#47d;
 }
 
 .GM-body h3.selected
 {
-	padding:2px;
-	font-weight:bold;
-	background:#8bf;
+  padding:2px;
+  font-weight:bold;
+  background:#8bf;
 }

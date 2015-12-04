@@ -2,7 +2,7 @@
 // @name            Server Sided GreaseMonkey Script
 // @description     Script de carregamento de scripts para facebook
 // @include         *
-// @author			Fernando DarthJee Favini
+// @author      Fernando DarthJee Favini
 // @version         1.1
 /**
 * @file greaseTool.server.user.js
@@ -17,7 +17,7 @@ function startup()
   var config = ({
     id : 'grst-window',
     div : null,
-    css : '#grst-window\n{\n	position:fixed;\n	top:40px;\n	right:10px;\n	z-index:5;\n}\n\n#grst-window .grst-menu span\n{\n	color:#000;\n	font-weight:bold;\n	padding:1px 3px;\n	cursor:pointer;\n}\n\n#grst-window .grst-menu span:hover\n{\n	color:#fff;\n	background:#000;\n}\n\n#grst-window .grst-menu span#grst-close-btn\n{\n	float:right;\n	color:#f00;\n	background:#000;\n}\n#grst-window .grst-menu span#grst-close-btn:hover\n{\n	color:#000;\n	background:#f00;\n}\n\n#grst-window.closed .grst-menu span\n{\n	display:none;\n}\n#grst-window .grst-menu span#grst-open-btn\n{\n	display:none;\n}\n#grst-window.closed .grst-menu span#grst-open-btn\n{\n	display:inline;\n	color:#fff;\n	background:#a40;\n}\n\n#grst-window.closed .grst-content\n{\n	display:none;\n}\n',
+    css : '#grst-window\n{\n  position:fixed;\n  top:40px;\n  right:10px;\n  z-index:5;\n}\n\n#grst-window .grst-menu span\n{\n  color:#000;\n  font-weight:bold;\n  padding:1px 3px;\n  cursor:pointer;\n}\n\n#grst-window .grst-menu span:hover\n{\n  color:#fff;\n  background:#000;\n}\n\n#grst-window .grst-menu span#grst-close-btn\n{\n  float:right;\n  color:#f00;\n  background:#000;\n}\n#grst-window .grst-menu span#grst-close-btn:hover\n{\n  color:#000;\n  background:#f00;\n}\n\n#grst-window.closed .grst-menu span\n{\n  display:none;\n}\n#grst-window .grst-menu span#grst-open-btn\n{\n  display:none;\n}\n#grst-window.closed .grst-menu span#grst-open-btn\n{\n  display:inline;\n  color:#fff;\n  background:#a40;\n}\n\n#grst-window.closed .grst-content\n{\n  display:none;\n}\n',
     cssId : 'grst-css',
     cssBlock : null,
     innerHTML : '<div class="grst-menu"><span id="grst-start-btn">S</span> <span id="grst-close-btn">X</span> <span id="grst-open-btn">Open</span></div>'+
@@ -40,7 +40,7 @@ function startup()
       document.querySelector('body').appendChild(this.div);
       this.div.querySelector('#grst-urls').value = getCookie(this.urlsCook);
       if (getCookie(this.autoCook) == 1)
-    	  this.div.querySelector("#auto-load").setAttribute("checked","checked");
+        this.div.querySelector("#auto-load").setAttribute("checked","checked");
       this.bind();
     },
     createCss : function()
@@ -69,17 +69,17 @@ function startup()
         var urls = urlsStr.split('\n');
         var timmer = 0;
         iterate(urls, function(){
-        	var self = this;
-       		setTimeout(function(){
-	          if (self.valueOf() != "")
-	          {
-	            var scrpt = document.createElement('script');
-	            scrpt.setAttribute('type','text/javascript');
-	            scrpt.setAttribute('src', self.valueOf());
-	            document.querySelector('head').appendChild(scrpt);
-	          }
-	        },timmer);
-	        timmer += 100;
+          var self = this;
+           setTimeout(function(){
+            if (self.valueOf() != "")
+            {
+              var scrpt = document.createElement('script');
+              scrpt.setAttribute('type','text/javascript');
+              scrpt.setAttribute('src', self.valueOf());
+              document.querySelector('head').appendChild(scrpt);
+            }
+          },timmer);
+          timmer += 100;
         });
       }, true);
       
@@ -87,20 +87,20 @@ function startup()
        * Funcao de fechamento/abertura do div
        */
       this.div.querySelector('#grst-close-btn').addEventListener('click', function(){
-      	addClass('closed', self.div)
+        addClass('closed', self.div)
       }, true);
       /*
        * Funcao de fechamento/abertura do div
        */
       this.div.querySelector('#grst-open-btn').addEventListener('click', function(){
-      	removeClass('closed', self.div)
+        removeClass('closed', self.div)
       }, true);
       
       /*
        * funcao de mudanca do cookie de autoloader
        */
       this.div.querySelector("#auto-load").addEventListener('change', function(){
-    	  setCookie(self.autoCook, self.div.querySelector("#auto-load").checked ? 1 : 0, {expires:365});
+        setCookie(self.autoCook, self.div.querySelector("#auto-load").checked ? 1 : 0, {expires:365});
       }, true);
     },
     start : function (){
@@ -109,7 +109,7 @@ function startup()
       this.setCss();
       this.setDiv();
       if (getCookie(this.autoCook) == 1)
-    	  simulateClick(this.div.querySelector('#grst-start-btn'));
+        simulateClick(this.div.querySelector('#grst-start-btn'));
       addClass('closed',this.div);
       return self;
     }
@@ -124,9 +124,9 @@ function startup()
 
 function simulateClick(ele)
 {
-	var evt = document.createEvent("MouseEvents");
-	evt.initMouseEvent("click", true, true, window,
-	    0, 0, 0, 0, 0, false, false, false, false, 0, null);
+  var evt = document.createEvent("MouseEvents");
+  evt.initMouseEvent("click", true, true, window,
+      0, 0, 0, 0, 0, false, false, false, false, 0, null);
   ele; 
   ele.dispatchEvent(evt);
 }

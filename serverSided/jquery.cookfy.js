@@ -54,124 +54,124 @@
  * @author Klaus Hartl/klaus.hartl@stilbuero.de
  */
 (function(jQuery){
-	jQuery.cookie = function(name, value, options) {
-	    if (typeof value != 'undefined') { // name and value given, set cookie
-	        options = options || {};
-	        if (value === null) {
-	            value = '';
-	            options.expires = -1;
-	        }
-	        var expires = '';
-	        if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
-	            var date;
-	            if (typeof options.expires == 'number') {
-	                date = new Date();
-	                date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
-	            } else {
-	                date = options.expires;
-	            }
-	            expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
-	        }
-	        // CAUTION: Needed to parenthesize options.path and options.domain
-	        // in the following expressions, otherwise they evaluate to undefined
-	        // in the packed version for some reason...
-	        var path = options.path ? '; path=' + (options.path) : '';
-	        var domain = options.domain ? '; domain=' + (options.domain) : '';
-	        var secure = options.secure ? '; secure' : '';
-	        document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
-	    } else { // only name given, get cookie
-	        var cookieValue = null;
-	        if (document.cookie && document.cookie != '') {
-	            var cookies = document.cookie.split(';');
-	            for (var i = 0; i < cookies.length; i++) {
-	                var cookie = jQuery.trim(cookies[i]);
-	                // Does this cookie string begin with the name we want?
-	                if (cookie.substring(0, name.length + 1) == (name + '=')) {
-	                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-	                    break;
-	                }
-	            }
-	        }
-	        return cookieValue;
-	    }
-	};
+  jQuery.cookie = function(name, value, options) {
+      if (typeof value != 'undefined') { // name and value given, set cookie
+          options = options || {};
+          if (value === null) {
+              value = '';
+              options.expires = -1;
+          }
+          var expires = '';
+          if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+              var date;
+              if (typeof options.expires == 'number') {
+                  date = new Date();
+                  date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+              } else {
+                  date = options.expires;
+              }
+              expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
+          }
+          // CAUTION: Needed to parenthesize options.path and options.domain
+          // in the following expressions, otherwise they evaluate to undefined
+          // in the packed version for some reason...
+          var path = options.path ? '; path=' + (options.path) : '';
+          var domain = options.domain ? '; domain=' + (options.domain) : '';
+          var secure = options.secure ? '; secure' : '';
+          document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+      } else { // only name given, get cookie
+          var cookieValue = null;
+          if (document.cookie && document.cookie != '') {
+              var cookies = document.cookie.split(';');
+              for (var i = 0; i < cookies.length; i++) {
+                  var cookie = jQuery.trim(cookies[i]);
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+  };
 })($jq);
 
 (function($){
-	$.cookiefy = function(key, defValue, options){
-		if ($.cookie(key))
-		{
-			defValue = $.cookie(key); 
-		}
-		return defValue;
-	};
-	cookiefy = function(key, defValue, options){
-		var $obj = this;
-		var type = 'text';
-		defValue = $.cookiefy(key, defValue, options);
-		if ($obj.is('input'))
-		{
-			switch($obj.attr('type'))
-			{
-				case 'checkbox' :
-					type='checkbox';
-					break;
-				case 'radio' :
-					type='radio';
-					break;
-			}
-		}
-		
-		$obj.unbind("change.cookiefy").bind("change.cookiefy", function(){
-			var val = cookiefy.getVal.call($obj,type);
-			$.cookie(key, val, options);
-		});
-		cookiefy.setVal.call($obj, type, defValue);
-		return this;
-	};
-	cookiefy.getVal = function(type){
-		switch(type)
-		{
-			case 'radio' :
-				var name = this.attr('name');
-				if (name)
-				{
-					return this.filter(':checked').val();
-					break;
-				}
-			case 'checkbox' :
-				return this.is(':checked') ? 1 : 0;
-			default :
-				return this.val();
-		}
-	};
-	cookiefy.setVal = function(type, value) {
-		var originalVal = null;
-		switch(type)
-		{
-			case 'radio' :
-				var name = this.attr('name');
-				if (name)
-				{
-					originalVal = $("input[name='"+name+"']:checked");
-					originalVal = originalVal.length > 0 ? originalVal.val() : value;
-					this.filter('[value="'+value+'"]').attr('checked',true);
-					break;
-				}
-			case 'checkbox' :
-				originalVal = this.is(':checked') ? 1:0;
-				if (value > 0)
-					this.attr('checked',true);
-				else
-					this.attr('checked',false);
-				break;
-			default :
-				originalVal = this.val(); 
-				this.val(value);
-		}
-		
-		if (originalVal != value)
-			this.trigger("change");
-	};
-	$.fn.cookiefy = cookiefy;
+  $.cookiefy = function(key, defValue, options){
+    if ($.cookie(key))
+    {
+      defValue = $.cookie(key); 
+    }
+    return defValue;
+  };
+  cookiefy = function(key, defValue, options){
+    var $obj = this;
+    var type = 'text';
+    defValue = $.cookiefy(key, defValue, options);
+    if ($obj.is('input'))
+    {
+      switch($obj.attr('type'))
+      {
+        case 'checkbox' :
+          type='checkbox';
+          break;
+        case 'radio' :
+          type='radio';
+          break;
+      }
+    }
+    
+    $obj.unbind("change.cookiefy").bind("change.cookiefy", function(){
+      var val = cookiefy.getVal.call($obj,type);
+      $.cookie(key, val, options);
+    });
+    cookiefy.setVal.call($obj, type, defValue);
+    return this;
+  };
+  cookiefy.getVal = function(type){
+    switch(type)
+    {
+      case 'radio' :
+        var name = this.attr('name');
+        if (name)
+        {
+          return this.filter(':checked').val();
+          break;
+        }
+      case 'checkbox' :
+        return this.is(':checked') ? 1 : 0;
+      default :
+        return this.val();
+    }
+  };
+  cookiefy.setVal = function(type, value) {
+    var originalVal = null;
+    switch(type)
+    {
+      case 'radio' :
+        var name = this.attr('name');
+        if (name)
+        {
+          originalVal = $("input[name='"+name+"']:checked");
+          originalVal = originalVal.length > 0 ? originalVal.val() : value;
+          this.filter('[value="'+value+'"]').attr('checked',true);
+          break;
+        }
+      case 'checkbox' :
+        originalVal = this.is(':checked') ? 1:0;
+        if (value > 0)
+          this.attr('checked',true);
+        else
+          this.attr('checked',false);
+        break;
+      default :
+        originalVal = this.val(); 
+        this.val(value);
+    }
+    
+    if (originalVal != value)
+      this.trigger("change");
+  };
+  $.fn.cookiefy = cookiefy;
 })($jq);
