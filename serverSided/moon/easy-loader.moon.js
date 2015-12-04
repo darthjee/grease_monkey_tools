@@ -10,32 +10,32 @@
       var loader = easyLoader({cache:false});
 
       loader.add({
-        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jq.js'
+        url:'http://scripts.favinis.net/serverSided/moon/jq.js'
       });
 
       loader.add({
-        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jquery.gs.menu.js',
+        url:'http://scripts.favinis.net/serverSided/moon/jquery.gs.menu.js',
         requisite:function(){
           return (window.$jq);
         }
       });
 
       loader.add({
-        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jquery.cookfy.js',
+        url:'http://scripts.favinis.net/serverSided/moon/jquery.cookfy.js',
         requisite:function(){
           return (window.$jq);
         }
       });
 
       loader.add({
-        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jquery.gs.menu.moon.js',
+        url:'http://scripts.favinis.net/serverSided/moon/jquery.gs.menu.moon.js',
         requisite:function(){
           return (window.$jq && $jq.fn.menu);
         }
       });
 
       loader.add({
-        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/moon.js',
+        url:'http://scripts.favinis.net/serverSided/moon/moon.js',
         requisite:function(){
           return (window.$jq && $jq.fn.menu && $jq.fn.menu.moon);
         }
