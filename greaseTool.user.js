@@ -25,8 +25,8 @@ window.addEventListener("load", function() {
   document.body.appendChild(tool);
 
   menu.startup();
-  
-  
+
+
 }, true);
 
 
@@ -81,8 +81,8 @@ function Menu()
     else
       var str = "<a href='#' onclick='return false;' id='"+id+"'>"+text+"</a>";
     listMenu.push(str);
-  }
-  
+  };
+
   this.render = function()
   {
     document.querySelector('#greaseTool #menu').innerHTML=listMenu.join(" ");
@@ -95,8 +95,8 @@ function Menu()
     }
     document.querySelector('#greaseTool #tool-content').innerHTML=listDiv.join("");
     openToolBox(document.querySelector('#greaseTool #menu *'));
-  }
-  
+  };
+
   this.startup = function()
   {
     this.render();
@@ -116,23 +116,23 @@ function Menu()
         openToolBox(this);
       }, true);
     });
-    
+
     for (var i = 0; i < startUpList.length; i++)
     {
       if (startUpList[i] != null)
         startUpList[i]();
     }
-  }
+  };
 
   function openTool()
   {
     removeClass('closed', document.querySelector('#greaseTool'));
-    addClass('opened', document.querySelector('#greaseTool'));  
+    addClass('opened', document.querySelector('#greaseTool'));
   }
   function closeTool()
   {
     removeClass('opened', document.querySelector('#greaseTool'));
-    addClass('closed', document.querySelector('#greaseTool')); 
+    addClass('closed', document.querySelector('#greaseTool'));
   }
 
   function openToolBox(e)
@@ -142,7 +142,7 @@ function Menu()
     iterate(divs, function(){Style(this, 'display', 'none');});
     Style(document.querySelector('#greaseTool #tool-content '+div), 'display', null);
   }
-  
+
 }
 
 
@@ -172,7 +172,7 @@ function removeClass(cla, e)
   claArr.sort();
   for (i = 0; i < claArr.lenght || cla > claArr[i]; i++) ;
   var begin = claArr.slice(0, i);
-  var end = claArr.slice(i); 
+  var end = claArr.slice(i);
   while (cla == end[0]) end.shift();
   claArr = begin.concat(end);
   e.className = claArr.join(" ");
