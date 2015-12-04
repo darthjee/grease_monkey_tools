@@ -5,14 +5,14 @@
 
 (function($,Menu){
   Menu.facebook = {};
-  
-  
+
+
   /**
-   * @fn requester 
+   * @fn requester
    * @brief aplicativo de menu capaz de aceitar
    * todos as requisicoes de jogos
-   * 
-   * 
+   *
+   *
    * A utilizacao deve ser feita com o facebookgames.com
    */
   var requester = function(){
@@ -29,7 +29,7 @@
       bind:function(){
         var controler = this;
         controler.findApp = requester.findApp;
-        
+
         var list = controler.findApp();
         var $div = this.div;
         var $ul = $div.find('.item-list ul');
@@ -44,7 +44,7 @@
             $selected.text($li.text());
           });
         });
-          
+
         $div.find('.accept').bind("click", function(){
           if (controler.selected)
           {
@@ -56,7 +56,7 @@
               var url = name.replace(/^actions\[(.*)\]$/g,"$1");
               var $iframe = $('<iframe style="position:absolute; bottom:1px; width:1px;height:1px;opacity:0;" class="hidden-opener"></iframe>');
               $iframe.attr('src', url);
-              setTimeout(function(){$iframe.remove()}, 3000);
+              setTimeout(function(){$iframe.remove();}, 3000);
               $('body').append($iframe);
               $li.remove();
             });
@@ -79,13 +79,13 @@
       objs.push(obj);
     });
     return objs;
-  }
+  };
   Menu.facebook.requester = requester;
-  
-  
-  
+
+
+
   /**
-   * @fn crawler 
+   * @fn crawler
    * @brief aplicativo de menu capaz de clicar
    * todos as requisicoes de jogos no mural
    */
@@ -116,12 +116,12 @@
         controler.removeFound = false;
         controler.removeNotFound = false;
         controler.crawlMore = false;
-        
-        
+
+
         var $div = controler.div;
-        
+
         $div.find('.find').bind("click", function(){
-          var apps = $(controler.apps).filter(function(){return this.selected});
+          var apps = $(controler.apps).filter(function(){return this.selected;});
           controler.posts = controler.findPosts(apps);
           if (controler.posts.length <= 0 && controler.crawlMore)
           {
@@ -160,11 +160,11 @@
           var $this = $(this);
           $this.attr('checked', 'checked');
         });
-        
+
         controler.appList = $div.find('.filter-list ul');
         controler.addAllApp();
-        
-        
+
+
         $div.find('.opts-list input').each(function(){
           var $box = $(this);
           var id = $box.attr('id');
@@ -180,7 +180,7 @@
     $jq('.uiMorePagerPrimary').trigger('click');
   };
   crawler.findPosts = function(apps){
-    var arr = []
+    var arr = [];
     var $list = $('#contentArea').find('#pagelet_wall,#pagelet_home_stream').find('#profile_minifeed,#home_stream').find('li.pvm');
     var controler = this;
     $list.each(function(){
@@ -200,7 +200,7 @@
       }
       if (!found && controler.removeNotFound)
         $li.remove();
-    })
+    });
     return arr;
   };
   crawler.addApp = function(id, app){
@@ -242,7 +242,7 @@
     var href=accept.attr('href');
     var $iframe = $('<iframe style="position:absolute; bottom:1px; width:1px;height:1px;opacity:0;" class="hidden-opener"></iframe>');
     $iframe.attr('src', href);
-    setTimeout(function(){$iframe.remove()}, 3000);
+    setTimeout(function(){$iframe.remove();}, 3000);
     $('body').append($iframe);
     if (remove)
       $this.remove();
@@ -297,17 +297,17 @@
     analyse:crawler.createGericAnalyser(134920244184)
   };
   Menu.facebook.crawler = crawler;
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
   /**
-   * @fn crawler 
+   * @fn crawler
    * @brief aplicativo de menu capaz de clicar
    * todos as requisicoes de jogos no mural
    */
@@ -322,8 +322,8 @@
         var controler = this;
         var $div = controler.div;
         controler.poker = new poker.controller();
-        
-        
+
+
         $div.find('.poke-em').bind("click", function(){
           var list = $('.home_right_column .mvm.fbCurrent .fbCurrentStory').filter(function(){
             var $this = $(this);
@@ -355,7 +355,7 @@
       dom:$dom,
       li:$li,
       id:$li.attr('id')
-    }
+    };
     this.pokes.push(poke);
   };
   poker.controller.prototype.click = function()
@@ -366,8 +366,8 @@
       controler.status = 0;
       console.log(controler.pokes);
     }
-  }
-  
+  };
+
   Menu.facebook.poker = poker;
-    
+
 })($jq,$jq.fn.menu);
