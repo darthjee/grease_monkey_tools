@@ -21,6 +21,13 @@
       });
 
       loader.add({
+        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jquery.cookfy.js',
+        requisite:function(){
+          return (window.$jq);
+        }
+      });
+
+      loader.add({
         url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jquery.gs.menu.moon.js',
         requisite:function(){
           return (window.$jq);
