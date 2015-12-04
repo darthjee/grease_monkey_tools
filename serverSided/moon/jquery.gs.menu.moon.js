@@ -6,7 +6,7 @@
     var set = {
       html : html,
       btnTitle:'precolandia',
-      extraClass:'',
+      extraClass:'GMS-preco',
       render:function(){
         return window.location.href.match(/.*/);
       },

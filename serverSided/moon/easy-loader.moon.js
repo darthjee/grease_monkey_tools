@@ -30,7 +30,14 @@
       loader.add({
         url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jquery.gs.menu.moon.js',
         requisite:function(){
-          return (window.$jq);
+          return (window.$jq && $jq.fn.menu);
+        }
+      });
+
+      loader.add({
+        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/moon.js',
+        requisite:function(){
+          return (window.$jq && $jq.fn.menu && $jq.fn.menu.moon);
         }
       });
 
