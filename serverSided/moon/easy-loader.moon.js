@@ -10,11 +10,23 @@
       var loader = easyLoader({cache:false});
 
       loader.add({
+        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jq.js'
+      });
+
+      loader.add({
         url:'',
         requisite:function(){
-          return (window.attribute);
+          return (window.$jq);
         }
       });
+
+      loader.add({
+        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jquery.gs.menu.js',
+        requisite:function(){
+          return (window.$jq);
+        }
+      });
+
       loader.run();
 
       clearInterval(watcher);
