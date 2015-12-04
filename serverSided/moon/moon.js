@@ -3,7 +3,7 @@
 
   if ($css.length == 0)
   {
-    $css = $('<link href="http://scripts.favinis.net/serverSided/easyLoader/moon/moon-menu.css" media="all" rel="stylesheet" />');
+    $css = $('<link href="http://scripts.favinis.net/serverSided/moon/moon-menu.css" media="all" rel="stylesheet" />');
     $('body').append($css);
   }
   var div = $('#GMS-Menu');
