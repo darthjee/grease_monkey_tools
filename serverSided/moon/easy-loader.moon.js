@@ -14,14 +14,14 @@
       });
 
       loader.add({
-        url:'',
+        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jquery.gs.menu.js',
         requisite:function(){
           return (window.$jq);
         }
       });
 
       loader.add({
-        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jquery.gs.menu.js',
+        url:'http://scripts.favinis.net/serverSided/easyLoader/moon/jquery.gs.menu.moon.js',
         requisite:function(){
           return (window.$jq);
         }
