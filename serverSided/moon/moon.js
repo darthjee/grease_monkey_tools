@@ -16,6 +16,6 @@
   div.show();
   menu.render();
 
-  menu.add($.fn.menu.precolandia());
+  menu.add($.fn.menu.moon.precolandia());
   menu.settings.menus.find('div:first').click();
 })($jq);
