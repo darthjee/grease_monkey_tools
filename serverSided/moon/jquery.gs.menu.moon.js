@@ -2,7 +2,7 @@
   Menu.moon = {};
 
   var precolandia = function(){
-    var html = '';
+    var html = '<button>import</button> <hr /> <textaread></textarea>';
     var set = {
       html : html,
       btnTitle:'precolandia',
