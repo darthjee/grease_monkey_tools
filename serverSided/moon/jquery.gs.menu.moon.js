@@ -66,7 +66,7 @@
         url = 'https://www.precolandia.com.br/product.aspx?idproduct='+product_id+'&idGiftList='+this.list_id;
 
     return {
-      image_url: imgae_url,
+      image_url: image_url,
       url: url,
       name: $block.find('a').text()
     };
