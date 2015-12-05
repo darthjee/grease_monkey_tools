@@ -56,12 +56,13 @@
 
   fn.parseGift = function() {
     var $block = $(this),
-        $link = $block.find('a');
+        $link = $block.find('a'),
+        image_url = 'http://www.precolandia.com.br/' + $block.find('img').attr('src');
 
     return {
-      image_url: $block.find('img').attr('src'),
+      image_url: imgae_url,
       url: $link.attr('href'),
-      name: $link.text
+      name: $link.text()
     };
   };
 
