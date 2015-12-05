@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Moon Script Loader
 // @description     Script de carregamento de scripts para moon
-// @include         http://cristinaefernando.net/
+// @include         http://*/
 // @author      Fernando DarthJee Favini
 // @version         0.0.1
 // ==/UserScript==
