@@ -21,7 +21,7 @@
   };
 
   function Controller(controller) {
-    this.div = controler.div;
+    this.div = controller.div;
   }
 
   var fn = Controller.prototype;
