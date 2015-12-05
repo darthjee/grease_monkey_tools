@@ -24,6 +24,7 @@
     this.div = controller.div;
     this.store_id = this.div.find('.store_id');
     this.marriage_id = this.div.find('.marriage_id');
+    this.list_id = document.location.search.match(/idgiftlist=([^&]*)/)[1];
   }
 
   var fn = Controller.prototype;
@@ -49,20 +50,25 @@
   };
 
   fn.getGifts = function () {
-    var $blocks = $('.border_listagem_right_cinza_claro');
+    var $blocks = $('.border_listagem_right_cinza_claro'),
+        that = this;
 
-    return $blocks.map(this.parseGift);
+    return $blocks.map(function(_, block) {
+      return that.parseGift(_, block);
+    });
   };
 
-  fn.parseGift = function() {
-    var $block = $(this),
-        $link = $block.find('a'),
-        image_url = 'http://www.precolandia.com.br/' + $block.find('img').attr('src');
+  fn.parseGift = function(_, block) {
+    var $block = $(block),
+        partial_image_path = $block.find('img').attr('src'),
+        image_url = 'http://www.precolandia.com.br/' + partial_image_path;
+        product_id = partial_image_path.match(/\/(\d*)e.JPG/)[1],
+        url = 'https://www.precolandia.com.br/product.aspx?idproduct='+product_id+'&idGiftList='+this.list_id;
 
     return {
       image_url: imgae_url,
-      url: $link.attr('href'),
-      name: $link.text()
+      url: url,
+      name: $block.find('a').text()
     };
   };
 
