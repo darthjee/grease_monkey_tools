@@ -22,17 +22,16 @@
 
   function Controller(controller) {
     this.div = controller.div;
+    this.store_id = this.div.find('.store_id');
+    this.marriage_id = this.div.find('.marriage_id');
   }
 
   var fn = Controller.prototype;
 
   fn.submit = function() {
-    var $store_id = this.div.find('.store_id'),
-        $marriage_id = this.div.find('.marriage_id');
-
      console.info({
-        marriage_id: $marriage_id.val(),
-        store_id: $store_id.val(),
+        marriage_id: this.marriage_id.val(),
+        store_id: this.store_id.val(),
         gifts: this.getGifts()
       });
   };
@@ -45,8 +44,8 @@
       that.submit();
     });
 
-    $store_id.cookiefy('GMS-prcl-store-id');
-    $marriage_id.cookiefy('GMS-prcl-marriage-id');
+    this.store_id.cookiefy('GMS-prcl-store-id');
+    this.marriage_id.cookiefy('GMS-prcl-marriage-id');
   };
 
   fn.getGifts = function () {
