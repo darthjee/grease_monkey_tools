@@ -50,6 +50,7 @@
 
     this.store_id.cookiefy('GMS-prcl-store-id');
     this.marriage_id.cookiefy('GMS-prcl-marriage-id');
+    this.admin_key.cookiefy('GMS-prcl-admin-key');
   };
 
   fn.getGifts = function () {
