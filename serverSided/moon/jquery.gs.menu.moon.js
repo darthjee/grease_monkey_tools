@@ -64,12 +64,14 @@
   fn.parseGift = function(_, block) {
     var $block = $(block),
         partial_image_path = $block.find('img').attr('src'),
-        image_url = 'http://www.precolandia.com.br/' + partial_image_path;
+        price = $block.find('.arial_14_vermelha').text().match(/\d+,\d+/)[0],
+        image_url = 'http://www.precolandia.com.br/' + partial_image_path,
         product_id = partial_image_path.match(/\/(\d*)e.JPG/)[1],
         url = 'https://www.precolandia.com.br/product.aspx?idproduct='+product_id+'&idGiftList='+this.list_id;
 
     return {
       url: url,
+      price: price,
       gift: {
         image_url: image_url,
         name: $block.find('a').text()
