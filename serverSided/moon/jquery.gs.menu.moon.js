@@ -45,6 +45,7 @@
         };
     console.info(previous, new_record);
     if (previous.gift_links) {
+      console.info(previous.gift_links);
       new_record.gift_links = previous.gift_links.concat(new_record.gift_links);
     }
     this.counter.text(new_record.gift_links.length);
