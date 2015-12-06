@@ -5,7 +5,7 @@
     var html = '<label for="store_id">Store</label> <input type="text" name="store_id" class="store_id" /> <br />' +
     '<label for="marriage_id">Marriage</label> <input type="text" name="marriage_id" class="marriage_id" /> <br />' +
     '<label for="admin_key">Key</label> <input type="password" name="admin_key" class="admin_key" /> <br />' +
-    '<label for="json_record">Gifts: <span class="json_record_count"></span></label>' +
+    '<label for="json_record">Gifts: <span class="json_record_count"></span></label> <br />' +
     '<textarea class="json_record"></textarea> <br />' +
     '<button>import</button>';
     var set = {
@@ -48,6 +48,7 @@
     }
     this.counter.text(new_record.gift_links.length);
     this.textarea.val(JSON.stringify(new_record));
+    this.textarea.trigger('change');
   };
 
   fn.readJson = function() {
