@@ -2,8 +2,9 @@
   Menu.moon = {};
 
   var precolandia = function(){
-    var html = '<input type="text" class="store_id" /> <br />' +
-    '<input type="text" class="marriage_id" /> <br />' +
+    var html = '<label for="store_id">Store</label> <input type="text" name="store_id" class="store_id" /> <br />' +
+    '<label for="marriage_id">Marriage</label> <input type="text" name="marriage_id" class="marriage_id" /> <br />' +
+    '<label for="admin_keyd">Key</label> <input type="password" name="admin_key" class="admin_key" /> <br />' +
     '<button>import</button>';
     var set = {
       html : html,
@@ -22,6 +23,7 @@
 
   function Controller(controller) {
     this.div = controller.div;
+    this.admin_key = this.div.find('.admin_key');
     this.store_id = this.div.find('.store_id');
     this.marriage_id = this.div.find('.marriage_id');
     this.list_id = document.location.search.match(/idgiftlist=([^&]*)/)[1];
@@ -33,7 +35,8 @@
      console.info({
         marriage_id: this.marriage_id.val(),
         store_id: this.store_id.val(),
-        gifts: this.getGifts()
+        admin_key: this.admin_key.val(),
+        gift_links: this.getGifts()
       });
   };
 
@@ -66,9 +69,11 @@
         url = 'https://www.precolandia.com.br/product.aspx?idproduct='+product_id+'&idGiftList='+this.list_id;
 
     return {
-      image_url: image_url,
       url: url,
-      name: $block.find('a').text()
+      gift: {
+        image_url: image_url,
+        name: $block.find('a').text()
+      }
     };
   };
 
