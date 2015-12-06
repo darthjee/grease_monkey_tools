@@ -44,7 +44,7 @@
     if (previous.gift_links) {
       new_record.gift_links = previous.gift_links + new_record.gift_links;
     }
-    this.textarea.val(JSON.stringfy(new_record.gift_links));
+    this.textarea.val(JSON.stringify(new_record.gift_links));
   };
 
   fn.readJson = function() {
