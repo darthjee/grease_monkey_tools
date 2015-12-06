@@ -81,7 +81,7 @@
 
     return $blocks.map(function(_, block) {
       return that.parseGift(_, block);
-    });
+    }).get();
   };
 
   fn.parseGift = function(_, block) {
