@@ -44,7 +44,7 @@
           gift_links: this.getGifts()
         };
     if (previous.gift_links) {
-      new_record.gift_links = previous.gift_links + new_record.gift_links;
+      new_record.gift_links = previous.gift_links.concat(new_record.gift_links);
     }
     this.counter.text(new_record.gift_links.length);
     this.textarea.val(JSON.stringify(new_record));
