@@ -88,6 +88,7 @@
         price = $block.find('.arial_14_vermelha').text().match(/\d+,\d+/)[0],
         image_url = 'http://www.precolandia.com.br/' + partial_image_path,
         product_id = partial_image_path.match(/\/(\d*)e.JPG/)[1],
+        quantity = $block.find('.arial_12_azul_escuro').text().match(/\d+/)[0],
         url = 'https://www.precolandia.com.br/product.aspx?idproduct='+product_id+'&idGiftList='+this.list_id;
 
     return {
@@ -95,7 +96,8 @@
       price: price,
       gift: {
         image_url: image_url,
-        name: $block.find('a').text()
+        name: $block.find('a').text(),
+        quantity: quantity
       }
     };
   };
