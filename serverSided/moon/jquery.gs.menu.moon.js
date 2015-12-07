@@ -97,7 +97,7 @@
       gift: {
         image_url: image_url.trim(),
         name: $block.find('a').text().trim(),
-        quantity: quantity
+        quantity: JSON.parse(quantity)
       }
     };
   };
