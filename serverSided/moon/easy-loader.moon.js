@@ -35,9 +35,17 @@
       });
 
       loader.add({
+        url:'http://scripts.favinis.net/serverSided/moon/jquery.gs.menu.pontofrio.js',
+        requisite:function(){
+          return (window.$jq && $jq.fn.menu);
+        }
+      });
+
+      loader.add({
         url:'http://scripts.favinis.net/serverSided/moon/moon.js',
         requisite:function(){
-          return (window.$jq && $jq.fn.menu && $jq.fn.menu.moon && $jq.fn.menu.moon.precolandia);
+          return (window.$jq && $jq.fn.menu && $jq.fn.menu.moon &&
+                  $jq.fn.menu.moon.precolandia && $jq.fn.menu.moon.pontofrio);
         }
       });
 
