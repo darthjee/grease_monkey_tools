@@ -85,7 +85,7 @@
   fn.parseGift = function(_, block) {
     var $block = $(block),
         partial_image_path = $block.find('img').attr('src'),
-        price = $block.find('.arial_14_vermelha').text().trim().match(/\d+,\d+/)[0],
+        price = $block.find('.arial_14_vermelha').text().trim().match(/\d+,\d+/)[0].replace(/,/,'.'),
         image_url = 'http://www.precolandia.com.br/' + partial_image_path,
         product_id = partial_image_path.match(/\/(\d*)e.JPG/)[1],
         quantity = $block.find('.arial_12_azul_escuro').text().trim().match(/\d+/)[0],
@@ -93,7 +93,7 @@
 
     return {
       url: url,
-      price: price,
+      price: JSON.parse(price),
       gift: {
         image_url: image_url.trim(),
         name: $block.find('a').text().trim(),
