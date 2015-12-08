@@ -86,11 +86,10 @@
 
   fn.parseGift = function(_, block) {
     var $block = $(block),
-        partial_image_path = $block.find('img').attr('src'),
         price = $block.find('a:visible:eq(1)').text().trim().match(/\d+,\d+/)[0].replace(/,/,'.'),
-        image_url = 'http://www.pontofrio.com.br/' + partial_image_path,
+        image_url = $block.find('img').attr('src'),
         product_id = partial_image_path.match(/\/(\d*)e.JPG/)[1],
-        quantity = $block.find('.arial_12_azul_escuro').text().trim().match(/\d+/)[0],
+        quantity = $block.find('.quantidades').text().trim().match(/\d+/)[0],
         url = 'https://www.pontofrio.com.br/product.aspx?idproduct='+product_id+'&idGiftList='+this.list_id;
 
     return {
