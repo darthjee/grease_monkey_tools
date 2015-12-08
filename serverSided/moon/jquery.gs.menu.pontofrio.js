@@ -76,7 +76,7 @@
   };
 
   fn.getGifts = function () {
-    var $blocks = $('.border_listagem_right_cinza_claro'),
+    var $blocks = $('.comoAdicionar > tbody > tr'),
         that = this;
 
     return $blocks.map(function(_, block) {
@@ -87,7 +87,7 @@
   fn.parseGift = function(_, block) {
     var $block = $(block),
         partial_image_path = $block.find('img').attr('src'),
-        price = $block.find('.arial_14_vermelha').text().trim().match(/\d+,\d+/)[0],
+        price = $block.find('a:visible:eq(1)').text().trim().match(/\d+,\d+/)[0].replace(/,/,'.'),
         image_url = 'http://www.pontofrio.com.br/' + partial_image_path,
         product_id = partial_image_path.match(/\/(\d*)e.JPG/)[1],
         quantity = $block.find('.arial_12_azul_escuro').text().trim().match(/\d+/)[0],
@@ -95,10 +95,10 @@
 
     return {
       url: url,
-      price: price,
+      price: JSON.parse(price),
       gift: {
         image_url: image_url.trim(),
-        name: $block.find('a').text().trim(),
+        name: $block.find('a:visible:eq(0)').text().trim(),
         quantity: JSON.parse(quantity)
       }
     };
