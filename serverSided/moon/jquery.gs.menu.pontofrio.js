@@ -1,5 +1,3 @@
-
-
 (function($,Menu){
   Menu.moon = Menu.moon || {};
 
