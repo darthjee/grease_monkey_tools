@@ -17,5 +17,6 @@
   menu.render();
 
   menu.add($.fn.menu.moon.precolandia());
+  menu.add($.fn.menu.moon.pontofrio());
   menu.settings.menus.find('div:first').click();
 })($jq);
