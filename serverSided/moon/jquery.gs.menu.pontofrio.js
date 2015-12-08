@@ -1,7 +1,9 @@
+
+
 (function($,Menu){
   Menu.moon = Menu.moon || {};
 
-  var precolandia = function(){
+  var pontofrio = function(){
     var html = '<label for="store_id">Store</label> <input type="text" name="store_id" class="store_id" /> <br />' +
     '<label for="marriage_id">Marriage</label> <input type="text" name="marriage_id" class="marriage_id" /> <br />' +
     '<label for="admin_key">Key</label> <input type="password" name="admin_key" class="admin_key" /> <br />' +
@@ -10,10 +12,10 @@
     '<button>import</button>';
     var set = {
       html : html,
-      btnTitle:'precolandia',
-      extraClass:'GMS-preco',
+      btnTitle:'pontofrio',
+      extraClass:'GMS-ponto',
       render:function(){
-        return window.location.href.match(/www.\precolandia\.com\.br/);
+        return window.location.href.match(/www.\pontofrio\.com\.br/);
       },
       bind:function(){
         var controler = new Controller(this);
@@ -67,10 +69,10 @@
       that.submit();
     });
 
-    this.store_id.cookiefy('GMS-prcl-store-id');
-    this.marriage_id.cookiefy('GMS-prcl-marriage-id');
-    this.admin_key.cookiefy('GMS-prcl-admin-key');
-    this.textarea.cookiefy('GMS-prcl-textarea');
+    this.store_id.cookiefy('GMS-ptf-store-id');
+    this.marriage_id.cookiefy('GMS-ptf-marriage-id');
+    this.admin_key.cookiefy('GMS-ptf-admin-key');
+    this.textarea.cookiefy('GMS-ptf-textarea');
   };
 
   fn.getGifts = function () {
@@ -86,10 +88,10 @@
     var $block = $(block),
         partial_image_path = $block.find('img').attr('src'),
         price = $block.find('.arial_14_vermelha').text().trim().match(/\d+,\d+/)[0],
-        image_url = 'http://www.precolandia.com.br/' + partial_image_path,
+        image_url = 'http://www.pontofrio.com.br/' + partial_image_path,
         product_id = partial_image_path.match(/\/(\d*)e.JPG/)[1],
         quantity = $block.find('.arial_12_azul_escuro').text().trim().match(/\d+/)[0],
-        url = 'https://www.precolandia.com.br/product.aspx?idproduct='+product_id+'&idGiftList='+this.list_id;
+        url = 'https://www.pontofrio.com.br/product.aspx?idproduct='+product_id+'&idGiftList='+this.list_id;
 
     return {
       url: url,
@@ -102,5 +104,5 @@
     };
   };
 
-  Menu.moon.precolandia = precolandia;
+  Menu.moon.pontofrio = pontofrio;
 })($jq,$jq.fn.menu);
