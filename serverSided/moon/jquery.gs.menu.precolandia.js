@@ -1,5 +1,5 @@
 (function($,Menu){
-  Menu.moon = {};
+  Menu.moon = Menu.moon || {};
 
   var precolandia = function(){
     var html = '<label for="store_id">Store</label> <input type="text" name="store_id" class="store_id" /> <br />' +

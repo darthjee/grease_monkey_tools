@@ -28,7 +28,7 @@
       });
 
       loader.add({
-        url:'http://scripts.favinis.net/serverSided/moon/jquery.gs.menu.moon.js',
+        url:'http://scripts.favinis.net/serverSided/moon/jquery.gs.menu.precolandia.js',
         requisite:function(){
           return (window.$jq && $jq.fn.menu);
         }
@@ -37,7 +37,7 @@
       loader.add({
         url:'http://scripts.favinis.net/serverSided/moon/moon.js',
         requisite:function(){
-          return (window.$jq && $jq.fn.menu && $jq.fn.menu.moon);
+          return (window.$jq && $jq.fn.menu && $jq.fn.menu.moon && $jq.fn.menu.moon.precolandia);
         }
       });
 
