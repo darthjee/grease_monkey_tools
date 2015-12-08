@@ -88,9 +88,8 @@
     var $block = $(block),
         price = $block.find('a:visible:eq(1)').text().trim().match(/\d+,\d+/)[0].replace(/,/,'.'),
         image_url = $block.find('img').attr('src'),
-        product_id = partial_image_path.match(/\/(\d*)e.JPG/)[1],
         quantity = $block.find('.quantidades').text().trim().match(/\d+/)[0],
-        url = 'https://www.pontofrio.com.br/product.aspx?idproduct='+product_id+'&idGiftList='+this.list_id;
+        url = $block.find('a:visible:eq(2)').attr('href').trim();
 
     return {
       url: url,
