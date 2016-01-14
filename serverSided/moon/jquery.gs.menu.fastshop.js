@@ -88,14 +88,19 @@
         partial_url = $block.find('a:eq(0)').attr('href'),
         $price = $block.find('.actualPrice'),
         price = $price.text().match(/\d+,\d+/)[0].replace(',', '.'),
-        url = 'http://listadecasamento.fastshop.com.br/ListaCasamento/'+partial_url;
+        url = 'http://listadecasamento.fastshop.com.br/ListaCasamento/'+partial_url,
+        name = $block.find('h2 a').text().trim();
+
+    if (name == '') {
+      name = "Produto: " + partial_url.match(/idSku=([^&]*)&/)[1];
+    }
 
     return {
       url: url,
       price: JSON.parse(price),
       gift: {
         image_url: image_url.trim(),
-        name: $block.find('h2 a').text().trim(),
+        name: name,
         quantity: 1
       }
     };
