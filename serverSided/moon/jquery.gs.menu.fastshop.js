@@ -86,6 +86,8 @@
         $img = $block.find('a img:eq(0)'),
         image_url = $img.attr('src'),
         partial_url = $block.find('a:eq(0)').attr('href'),
+        $price = $block.find('.actualPrice'),
+        price = $price.text().match(/\d+,\d+/)[0].replace(',', '.'),
         url = 'http://listadecasamento.fastshop.com.br/ListaCasamento/'+partial_url;
 
     return {
