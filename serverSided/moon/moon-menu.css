@@ -8,6 +8,7 @@
   position: fixed;
   top: 40px;
   right: 10px;
+  z-index: 100;
 }
 
 .GMS-Menu input[type="text"], .GMS-Menu textarea {
