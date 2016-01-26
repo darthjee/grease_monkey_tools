@@ -87,7 +87,7 @@
   fn.parseGift = function(_, block) {
     var $block = $(block),
         priceMatch = $block.find('a:visible:eq(1)').text().trim().match(/\d+,\d+/),
-        price = priceMatch ? null : priceMatch[0].replace(/,/,'.'),
+        price = priceMatch ? priceMatch[0].replace(/,/,'.') : null,
         image_url = $block.find('img').attr('src'),
         quantity = $block.find('.quantidades').text().trim().match(/\d+/)[0],
         bought = $block.find('.quantidades').text().trim().match(/\d+/g)[1],
