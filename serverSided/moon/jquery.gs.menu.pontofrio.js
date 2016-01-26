@@ -88,14 +88,16 @@
     var $block = $(block),
         priceMatch = $block.find('a:visible:eq(1)').text().trim().match(/\d+,\d+/),
         price = priceMatch ? priceMatch[0].replace(/,/,'.') : null,
-        image_url = $block.find('img').attr('src'),
-        quantity = $block.find('.quantidades').text().trim().match(/\d+/)[0],
-        bought = $block.find('.quantidades').text().trim().match(/\d+/g)[1],
-        url = $block.find('a:visible:eq(2)').attr('href').trim();
+        image_url, quantity, bought, url;
 
     if (price === null) {
       return null;
     }
+
+    image_url = $block.find('img').attr('src'),
+    quantity = $block.find('.quantidades').text().trim().match(/\d+/)[0],
+    bought = $block.find('.quantidades').text().trim().match(/\d+/g)[1],
+    url = $block.find('a:visible:eq(2)').attr('href').trim();
 
     return {
       url: url,
