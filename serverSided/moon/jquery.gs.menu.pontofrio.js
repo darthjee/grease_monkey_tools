@@ -74,20 +74,28 @@
 
   fn.getGifts = function () {
     var $blocks = $('.comoAdicionar > tbody > tr'),
-        that = this;
+        that = this,
+        list = [];
 
-    return $blocks.map(function(_, block) {
+    list = $blocks.map(function(_, block) {
       return that.parseGift(_, block);
     }).get();
+
+    return _.select(list, function(x) { return x; });
   };
 
   fn.parseGift = function(_, block) {
     var $block = $(block),
-        price = $block.find('a:visible:eq(1)').text().trim().match(/\d+,\d+/)[0].replace(/,/,'.'),
+        priceMatch = $block.find('a:visible:eq(1)').text().trim().match(/\d+,\d+/),
+        price = priceMatch ? null : [0].replace(/,/,'.'),
         image_url = $block.find('img').attr('src'),
         quantity = $block.find('.quantidades').text().trim().match(/\d+/)[0],
         bought = $block.find('.quantidades').text().trim().match(/\d+/g)[1],
         url = $block.find('a:visible:eq(2)').attr('href').trim();
+
+    if (price === null) {
+      return null;
+    }
 
     return {
       url: url,
