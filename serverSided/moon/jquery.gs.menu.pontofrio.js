@@ -94,7 +94,7 @@
 
     price = priceMatch ? JSON.parse(priceMatch[0].replace(/,/,'.')) : null;
     image_url = $block.find('img').attr('src'),
-    quantity = quantitymatch ? JSON.parse(quantityMatch[0]) : null,
+    quantity = quantityMatch ? JSON.parse(quantityMatch[0]) : null,
     bought = boughtMatch ? JSON.parse(boughtMatch[1]) : null,
     url = href ? href.trim() : null;
 
