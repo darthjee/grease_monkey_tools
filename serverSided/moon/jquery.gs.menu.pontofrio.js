@@ -87,27 +87,32 @@
   fn.parseGift = function(_, block) {
     var $block = $(block),
         priceMatch = $block.find('a:visible:eq(1)').text().trim().match(/\d+,\d+/),
-        price = priceMatch ? priceMatch[0].replace(/,/,'.') : null,
-        image_url, quantity, bought, url;
+        quantityMatch = $block.find('.quantidades').text().trim().match(/\d+/),
+        boughtMatch = $block.find('.quantidades').text().trim().match(/\d+/g),
+        href = $block.find('a:visible:eq(2)').attr('href'),
+        price, image_url, quantity, bought, url, giftJson;
 
-    if (price === null) {
-      return null;
-    }
-
+    price = priceMatch ? JSON.parse(priceMatch[0].replace(/,/,'.')) : null;
     image_url = $block.find('img').attr('src'),
-    quantity = $block.find('.quantidades').text().trim().match(/\d+/)[0],
-    bought = $block.find('.quantidades').text().trim().match(/\d+/g)[1],
-    url = $block.find('a:visible:eq(2)').attr('href').trim();
+    quantity = quantitymatch ? JSON.parse(quantityMatch[0]) : null,
+    bought = boughtMatch ? JSON.parse(boughtMatch[1]) : null,
+    url = href ? href.trim() : null;
+
+    giftJson = {
+      image_url: image_url.trim(),
+      name: $block.find('a:visible:eq(0)').text().trim(),
+      quantity: quantity,
+      bought: bought
+    };
+
+    _.each(giftJson, function(key, val) {
+      if(val == null) { giftJson.delete(key); }
+    });
 
     return {
       url: url,
-      price: JSON.parse(price),
-      gift: {
-        image_url: image_url.trim(),
-        name: $block.find('a:visible:eq(0)').text().trim(),
-        quantity: JSON.parse(quantity),
-        bought: JSON.parse(bought)
-      }
+      price: price,
+      gift: giftJson
     };
   };
 
