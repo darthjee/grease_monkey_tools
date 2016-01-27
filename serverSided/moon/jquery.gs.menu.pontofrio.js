@@ -105,9 +105,10 @@
       bought: bought
     };
 
-    _.each(giftJson, function(key, val) {
+    for(key in ['image_url', 'name', 'quantity', 'bought']) {
+      val = giftJson[key];
       if(val == null) { giftJson.delete(key); }
-    });
+    }
 
     return {
       url: url,
