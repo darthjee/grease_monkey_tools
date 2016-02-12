@@ -73,8 +73,47 @@
   };
 
   fn.getGifts = function () {
-    var $blocks = $('.box_prod_lista_casamento3 .prod_dicas_lista_info'),
-        that = this;
+    var gifts,
+        $blocks = $('.box_prod_lista_casamento3 .prod_dicas_lista_info'),
+        $givenBlocks = $('.linha');
+
+    if ($blocks.length > 0) {
+      gifts = this.getPublicGifts($blocks);
+    } else {
+      gifts = this.getGivenGifts($givenBlocks);
+    }
+    return gifts;
+  };
+
+  fn.getGivenGifts = function($blocks) {
+    var that = this;
+
+    return $blocks.map(function(_, block) {
+      return that.parseGivenGift(_, block);
+    }).get();
+  };
+
+  fn.parseGivenGift = function(_, block) {
+    var $block = $(block)
+        $img = $block.find('img:eq(0)'),
+        $a = $block.find('a:eq(0)'),
+        image_url = $img.attr('src'),
+        url = $a.attr('href'),
+        name = $a.text().trim();
+
+    return {
+      url: url,
+      gift: {
+        image_url: image_url,
+        name: name,
+        quantity: 1,
+        bought: 1
+      }
+    };
+  }
+
+  fn.getPublicGifts = function($blocks) {
+    var that = this;
 
     return $blocks.map(function(_, block) {
       return that.parseGift(_, block);
@@ -108,3 +147,4 @@
 
   Menu.moon.fastshop = fastshop;
 })($jq,$jq.fn.menu);
+
