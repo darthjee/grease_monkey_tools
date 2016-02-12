@@ -3,8 +3,9 @@
 // @description     Script de carregamento de scripts para moon
 // @include         http://www.pontofrio.com.br/Site/ListaGerenciadaLandingPage.aspx?*
 // @include         http://www.precolandia.com.br/lista+de+casamento*
+// @include         http://www.precolandia.com.br/giftlistview.aspx?*
 // @author      Fernando DarthJee Favini
-// @version         0.0.3
+// @version         0.0.4
 // ==/UserScript==
 
 (function(){
