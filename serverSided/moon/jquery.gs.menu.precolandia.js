@@ -30,7 +30,7 @@
     this.marriage_id = this.div.find('.marriage_id');
     this.textarea = this.div.find('textarea');
     this.counter = this.div.find('.json_record_count');
-    this.list_id = document.location.search.match(/idgiftlist=([^&]*)/)[1];
+    this.list_id = document.location.search.match(/idgiftlist=([^&]*)/i)[1];
   }
 
   var fn = Controller.prototype;
@@ -104,3 +104,4 @@
 
   Menu.moon.precolandia = precolandia;
 })($jq,$jq.fn.menu);
+
