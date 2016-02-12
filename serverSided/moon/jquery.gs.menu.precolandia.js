@@ -84,22 +84,52 @@
 
   fn.parseGift = function(_, block) {
     var $block = $(block),
-        partial_image_path = $block.find('img').attr('src'),
-        price = $block.find('.arial_14_vermelha').text().trim().match(/\d+,\d+/)[0].replace(/,/,'.'),
+        info;
+
+    if ($block.find('.arial_14_vermelha').length > 0) {
+      info = this.parseOpenGift($block);
+    } else {
+      info = this.parseBoughtGift($block);
+    }
+    return info;
+  };
+
+  fn.parseCommonInfo = function($block) {
+    var partial_image_path = $block.find('img').attr('src'),
         image_url = 'http://www.precolandia.com.br/' + partial_image_path,
         product_id = partial_image_path.match(/\/(\d*)e.JPG/)[1],
-        quantity = $block.find('.arial_12_azul_escuro input').value().trim(),
         url = 'https://www.precolandia.com.br/product.aspx?idproduct='+product_id+'&idGiftList='+this.list_id;
-
     return {
       url: url,
-      price: JSON.parse(price),
       gift: {
         image_url: image_url.trim(),
-        name: $block.find('a').text().trim(),
-        quantity: JSON.parse(quantity)
       }
     };
+  }
+
+  fn.parseBoughtGift = function($block) {
+    var info = this.parseCommonInfo($block),
+        name = $block.find('.arial_12_azul_escuro:eq(0)').text().trim(),
+        quantity = $block.find('.arial_12_azul_escuro:eq(1)').text().trim();
+
+   info.gift.bought = quantity;
+   info.gift.quantity = quantity;
+   info.gift.name = name;
+
+    return info;
+  };
+
+  fn.parseOpenGift = function($block) {
+    var price = $block.find('.arial_14_vermelha').text().trim().match(/\d+,\d+/)[0].replace(/,/,'.'),
+        quantity = $block.find('.arial_12_azul_escuro input').value().trim();
+        name = $block.find('a').text().trim()
+        info = this.parseCommonInfo($block);
+
+    info.price = JSON.parse(price);
+    info.gift.quantity = JSON.parse(quantity);
+    info.gift.name = name;
+
+    return info;
   };
 
   Menu.moon.precolandia = precolandia;
